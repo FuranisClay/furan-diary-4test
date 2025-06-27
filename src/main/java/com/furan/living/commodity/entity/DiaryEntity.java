@@ -29,7 +29,7 @@ public class DiaryEntity implements Serializable {
 	/**
 	 * 日记ID
 	 */
-	@TableId(type = IdType.AUTO)
+	@TableId(type = IdType.INPUT)
 	@JsonProperty("id")
 	private Integer id;
 

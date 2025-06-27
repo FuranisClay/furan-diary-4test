@@ -29,7 +29,7 @@ public class LifeRecordEntity implements Serializable {
 	/**
 	 * 主键ID
 	 */
-	@TableId(type = IdType.AUTO)
+	@TableId(type = IdType.INPUT)
 	@JsonProperty("id")
 	private Integer id;
 

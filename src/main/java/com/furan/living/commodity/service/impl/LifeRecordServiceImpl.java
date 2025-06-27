@@ -1,5 +1,7 @@
 package com.furan.living.commodity.service.impl;
 
+import com.furan.living.commodity.entity.DiaryEntity;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -19,10 +21,12 @@ public class LifeRecordServiceImpl extends ServiceImpl<LifeRecordDao, LifeRecord
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String)params.get("key");
         IPage<LifeRecordEntity> page = this.page(
                 new Query<LifeRecordEntity>().getPage(params),
-                new QueryWrapper<LifeRecordEntity>()
+                new QueryWrapper<LifeRecordEntity>().eq(StringUtils.isNotBlank(key), "title", key)
         );
+
 
         return new PageUtils(page);
     }

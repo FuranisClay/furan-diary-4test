@@ -3,6 +3,7 @@ package com.furan.living.commodity.service.impl;
 import com.furan.living.commodity.utils.PageUtils;
 import com.furan.living.commodity.utils.Query;
 import com.furan.living.commodity.utils.R;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -20,9 +21,10 @@ public class DiaryServiceImpl extends ServiceImpl<DiaryDao, DiaryEntity> impleme
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String)params.get("key");
         IPage<DiaryEntity> page = this.page(
                 new Query<DiaryEntity>().getPage(params),
-                new QueryWrapper<DiaryEntity>()
+                new QueryWrapper<DiaryEntity>().eq(StringUtils.isNotBlank(key), "title", key)
         );
 
         return new PageUtils(page);

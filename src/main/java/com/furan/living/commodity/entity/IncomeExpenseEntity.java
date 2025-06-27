@@ -30,7 +30,7 @@ public class IncomeExpenseEntity implements Serializable {
 	/**
 	 * 主键ID
 	 */
-	@TableId(type = IdType.AUTO)
+	@TableId(type = IdType.INPUT)
 	@JsonProperty("id")
 	private Integer id;
 
